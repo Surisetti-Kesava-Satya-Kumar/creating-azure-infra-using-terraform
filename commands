@@ -1,0 +1,12 @@
+QA :
+terraform init -backend-config="./env/qa/qabackend.tfvars" --reconfigure
+terraform plan -state=./env/qa/qa.tfstate -var-file=./env/qa/qa.tfvars
+terraform apply -var-file=./env/qa/qa.tfvars --auto-approve
+terraform destroy -var-file=./env/qa/qa.tfvars --auto-approve
+
+PROD:
+terraform init -backend-config="./env/prod/prodbackend.tfvars" --reconfigure
+terraform plan -state=./env/prod/prod.tfstate -var-file=./env/prod/prod.tfvars
+terraform apply -var-file=./env/prod/prod.tfvars --auto-approve
+terraform destroy -var-file=./env/prod/prod.tfvars --auto-approve
+
